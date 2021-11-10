@@ -12,9 +12,17 @@ import '../styles/repositories.scss';
     link: "https://github.com/camisminei"
 }*/
 
+interface Repository {
+    name: string;
+    description: string;
+    html_url: string;
+}
+
 export function RepositoryList() {
 
-    const [repositories, setRepositories] = useState([]);
+    const [repositories, setRepositories] = useState<Repository[]>([]);
+    //<> generic -> <Repository> || <Repository[]> -> generic de listagem
+
 
     useEffect(() => {
         fetch('https://api.github.com/orgs/rocketseat/repos')
